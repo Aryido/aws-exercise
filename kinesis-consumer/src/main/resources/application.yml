@@ -1,0 +1,16 @@
+
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: test-kinesis-henry-y-lee-stream
+          group: test-kinesis-henry-y-lee-stream-group
+          content-type: text/plain
+
+cloud:
+  aws:
+    region:
+      static: ap-northeast-1
+    stack:
+      auto: false
