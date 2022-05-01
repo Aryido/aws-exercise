@@ -11,11 +11,7 @@
 	<artifactId>kinesis-producer</artifactId>
 	<version>2.0.0-SNAPSHOT</version>
 	<name>kinesis-producer</name>
-	<description>Demo project for Spring Boot</description>
-
-	<properties>
-		<spring-cloud.version>Greenwich.SR1</spring-cloud.version>
-	</properties>
+	<description>Demo project for Spring Boot AWS Kinesis Producer</description>
 
 	<dependencies>
 		<dependency>
@@ -29,13 +25,7 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-stream-binder-kinesis</artifactId>
-			<version>1.2.0.RELEASE</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			<version>2.2.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
