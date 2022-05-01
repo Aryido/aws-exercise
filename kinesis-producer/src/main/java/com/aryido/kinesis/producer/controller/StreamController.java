@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.UUID;
+
 @Slf4j
 @RestController
 public class StreamController {
@@ -20,6 +22,8 @@ public class StreamController {
 
 	@GetMapping( "/send/{name}" )
 	public ResponseEntity<?> delegateToSource( @PathVariable String name ) {
+		UUID id = UUID.randomUUID();
+
 		this.bridge.send( "test-kinesis-henry-y-lee-stream", name );
 		return ResponseEntity.ok( name );
 	}
