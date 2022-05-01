@@ -3,9 +3,8 @@ spring:
   cloud:
     stream:
       bindings:
-        input:
+        responseData-in-0:
           destination: test-kinesis-henry-y-lee-stream
-          group: test-kinesis-henry-y-lee-stream-group
           content-type: text/plain
 
 cloud:

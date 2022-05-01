@@ -3,7 +3,7 @@ spring:
   cloud:
     stream:
       bindings:
-        output:
+        source-out-0:
           destination: test-kinesis-henry-y-lee-stream
           content-type: text/plain
 
