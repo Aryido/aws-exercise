@@ -5,7 +5,6 @@ spring:
       bindings:
         responseData-in-0:
           destination: test-kinesis-henry-y-lee-stream
-          content-type: text/plain
 
 cloud:
   aws:
@@ -13,3 +12,5 @@ cloud:
       static: ap-northeast-1
     stack:
       auto: false
+    credentials:
+      profile-name: default

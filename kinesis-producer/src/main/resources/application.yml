@@ -1,11 +1,9 @@
-
 spring:
   cloud:
     stream:
       bindings:
         source-out-0:
           destination: test-kinesis-henry-y-lee-stream
-          content-type: text/plain
 
 cloud:
   aws:

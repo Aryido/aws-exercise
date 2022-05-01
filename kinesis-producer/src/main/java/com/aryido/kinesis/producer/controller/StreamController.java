@@ -1,5 +1,6 @@
 package com.aryido.kinesis.producer.controller;
 
+import com.aryido.common.proto.KinesisData.kinesisData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.function.StreamBridge;
@@ -22,9 +23,11 @@ public class StreamController {
 
 	@GetMapping( "/send/{name}" )
 	public ResponseEntity<?> delegateToSource( @PathVariable String name ) {
-		UUID id = UUID.randomUUID();
-
-		this.bridge.send( "test-kinesis-henry-y-lee-stream", name );
+		kinesisData.Builder builder = kinesisData.newBuilder();
+		kinesisData build = builder.setUid( UUID.randomUUID().toString() )
+				.setName( name )
+				.build();
+		this.bridge.send( "test-kinesis-henry-y-lee-stream", build.toByteArray() );
 		return ResponseEntity.ok( name );
 	}
 }
