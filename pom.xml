@@ -105,6 +105,7 @@
 		<module>kinesis-producer</module>
 		<module>kinesis-consumer</module>
 		<module>common</module>
+		<module>s3-operator</module>
 	</modules>
 
 </project>

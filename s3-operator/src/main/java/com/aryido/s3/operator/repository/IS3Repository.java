@@ -1,4 +1,4 @@
-package com.aryido.kinesis.consumer.repository;
+package com.aryido.s3.operator.repository;
 
 /**
  * @author YunYang Lee

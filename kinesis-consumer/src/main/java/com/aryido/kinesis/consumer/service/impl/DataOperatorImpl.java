@@ -1,8 +1,8 @@
 package com.aryido.kinesis.consumer.service.impl;
 
 import com.aryido.common.proto.Message.KinesisData;
-import com.aryido.kinesis.consumer.repository.IS3Repository;
 import com.aryido.kinesis.consumer.service.IDataOperator;
+import com.aryido.s3.operator.repository.IS3Repository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.Message;
