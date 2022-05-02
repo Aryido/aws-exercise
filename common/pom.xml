@@ -25,6 +25,10 @@
 			<artifactId>protobuf-java-util</artifactId>
 			<version>3.20.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-messaging</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -36,6 +40,7 @@
 				<configuration>
 					<protocExecutable>D:/protobuf/bin/protoc.exe</protocExecutable>
 					<outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
+					<clearOutputDirectory>false</clearOutputDirectory>
 				</configuration>
 				<executions>
 					<execution>
