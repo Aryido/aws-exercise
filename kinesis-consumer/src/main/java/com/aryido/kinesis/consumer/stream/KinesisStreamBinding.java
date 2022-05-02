@@ -1,9 +1,12 @@
 package com.aryido.kinesis.consumer.stream;
 
+import com.aryido.common.proto.Message.KinesisData;
 import com.aryido.kinesis.consumer.service.IDataOperator;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.messaging.Message;
 
 import java.util.function.Consumer;
 
@@ -13,15 +16,16 @@ import java.util.function.Consumer;
 @Slf4j
 @Configuration
 public class KinesisStreamBinding {
-	private final IDataOperator dataOperator;
+	private final IDataOperator<KinesisData> dataOperator;
 
-	public KinesisStreamBinding( IDataOperator dataOperator ) {
+	@Autowired
+	public KinesisStreamBinding( IDataOperator<KinesisData> dataOperator ) {
 		this.dataOperator = dataOperator;
 	}
 
 	@Bean
-	public Consumer<byte[]> responseData() {
-		return dataOperator::update;
+	public Consumer<Message<KinesisData>> responseData() {
+		return dataOperator::upload;
 	}
 
 }
