@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 public class StreamController {
+	private static final String BINDING_NAME = "test-kinesis-henry-y-lee-stream";
+	private static final MimeType MIME_TYPE = MimeType.valueOf( "application/x-protobuf" );
+
 	private final StreamBridge bridge;
 	private final IProtobufConvertorService<KinesisData> protoBufConvertorService;
 
@@ -26,7 +29,7 @@ public class StreamController {
 	@GetMapping( "/send/{name}" )
 	public ResponseEntity<?> delegateToSource( @PathVariable String name ) {
 		KinesisData data = protoBufConvertorService.convert( name );
-		this.bridge.send( "test-kinesis-henry-y-lee-stream", data, MimeType.valueOf( "application/x-protobuf" ) );
+		this.bridge.send( BINDING_NAME, data, MIME_TYPE );
 		return ResponseEntity.ok( name );
 	}
 }
