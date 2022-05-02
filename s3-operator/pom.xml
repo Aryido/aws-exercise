@@ -29,5 +29,32 @@
 			<artifactId>aws-java-sdk-s3</artifactId>
 			<version>1.11.951</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.parquet</groupId>
+			<artifactId>parquet-common</artifactId>
+			<version>1.12.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.parquet</groupId>
+			<artifactId>parquet-encoding</artifactId>
+			<version>1.12.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.parquet</groupId>
+			<artifactId>parquet-column</artifactId>
+			<version>1.12.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.parquet</groupId>
+			<artifactId>parquet-hadoop</artifactId>
+			<version>1.12.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.parquet/parquet -->
+		<dependency>
+			<groupId>org.apache.parquet</groupId>
+			<artifactId>parquet</artifactId>
+			<version>1.12.2</version>
+			<type>pom</type>
+		</dependency>
 	</dependencies>
 </project>
