@@ -7,7 +7,7 @@ spring:
     stream:
       bindings:
         responseData-in-0:
-          destination: test-kinesis-henry-y-lee-trendmicro-stream
+          destination: test-kinesis-henry-y-lee-stream
           binder: kinesis
 
       binders:

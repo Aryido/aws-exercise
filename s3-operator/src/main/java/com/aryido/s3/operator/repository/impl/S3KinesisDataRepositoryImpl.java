@@ -7,6 +7,7 @@ import com.aryido.common.proto.Message.KinesisData;
 import com.aryido.s3.operator.repository.IS3Repository;
 import lombok.extern.slf4j.Slf4j;
 
+
 /**
  * @author YunYang Lee
  */
@@ -25,6 +26,12 @@ public class S3KinesisDataRepositoryImpl implements IS3Repository<KinesisData> {
 	public void putData( KinesisData data ) {
 		if ( s3client.doesBucketExistV2( BUCKET_NAME ) ) {
 			log.info( "write into s3." );
+			//ProtoSchemaConverter protoSchemaConverter = new ProtoSchemaConverter( true );
+			//MessageType schema = protoSchemaConverter.convert( KinesisData.class );
+			//log.info( schema.toString() );
+			//ExampleParquetWriter.builder( new Path("D:/"+System.currentTimeMillis() +".parquet") )
+			//		.withExtraMetaData( ParquetFileWriter.Mode.CREATE )
+
 		}
 	}
 }

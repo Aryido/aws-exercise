@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 public class StreamController {
-	private static final String BINDING_NAME = "test-kinesis-henry-y-lee-trendmicro-stream";
+	private static final String BINDING_NAME = "test-kinesis-henry-y-lee-stream";
 	private static final MimeType MIME_TYPE = MimeType.valueOf( "application/x-protobuf" );
 
 	private final StreamBridge bridge;

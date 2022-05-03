@@ -49,6 +49,23 @@
 			<artifactId>parquet-hadoop</artifactId>
 			<version>1.12.0</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.parquet</groupId>
+			<artifactId>parquet-protobuf</artifactId>
+			<version>1.12.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-hdfs</artifactId>
+			<version>3.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-common-instrumented</artifactId>
+			<version>0.22.0</version>
+		</dependency>
+		<!-- Thanks for using https://jar-download.com -->
+
 		<!-- https://mvnrepository.com/artifact/org.apache.parquet/parquet -->
 		<dependency>
 			<groupId>org.apache.parquet</groupId>
