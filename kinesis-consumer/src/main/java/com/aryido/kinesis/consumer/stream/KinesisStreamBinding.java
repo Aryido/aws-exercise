@@ -24,8 +24,11 @@ public class KinesisStreamBinding {
 	}
 
 	@Bean
-	public Consumer<Message<KinesisData>> responseData() {
-		return dataOperator::upload;
+	public Consumer<Message<byte[]>> responseData() {
+		return message ->{
+			log.info(message.getHeaders().toString());
+			dataOperator.upload(message.getPayload());
+		};
 	}
 
 }

@@ -5,7 +5,6 @@ import com.aryido.kinesis.consumer.service.IDataOperator;
 import com.aryido.s3.operator.repository.IS3Repository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.Message;
 import org.springframework.stereotype.Service;
 
 /**
@@ -22,9 +21,9 @@ public class DataOperatorImpl implements IDataOperator<KinesisData> {
 	}
 
 	@Override
-	public void upload( Message<KinesisData> message ) {
+	public void upload( byte[] bytes ) {
 		try {
-			KinesisData kinesisData = message.getPayload();
+			KinesisData kinesisData = KinesisData.parseFrom(bytes);
 			log.info( "hello, {}, {}.", kinesisData.getUid(), kinesisData.getName() );
 			this.s3Repository.putData( kinesisData );
 		} catch (Exception e) {

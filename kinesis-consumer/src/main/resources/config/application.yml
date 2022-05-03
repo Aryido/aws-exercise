@@ -1,19 +1,23 @@
 spring:
 
   profiles:
-    active:"@activeProfile@"
+    active: "@activeProfile@"
 
   cloud:
     stream:
       bindings:
         responseData-in-0:
-          destination: test-kinesis-henry-y-lee-stream
+          destination: test-kinesis-henry-y-lee-trendmicro-stream
+          binder: kinesis
 
-cloud:
-  aws:
-    credentials:
-      profile-name: default
-    region:
-      static: ap-northeast-1
-    stack:
-      auto: false
+      binders:
+        kinesis:
+          environment:
+            cloud:
+              aws:
+                credentials:
+                  profile-name: default
+                region:
+                  static: ap-northeast-1
+                stack:
+                  auto: false
