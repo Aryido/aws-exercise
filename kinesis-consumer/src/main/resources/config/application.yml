@@ -1,4 +1,8 @@
 spring:
+
+  profiles:
+    active:"@activeProfile@"
+
   cloud:
     stream:
       bindings:

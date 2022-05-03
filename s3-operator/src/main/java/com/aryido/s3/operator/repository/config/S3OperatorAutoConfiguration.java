@@ -1,12 +1,12 @@
 package com.aryido.s3.operator.repository.config;
 
 import com.amazonaws.services.s3.AmazonS3;
-import com.aryido.common.proto.Message.KinesisData;
 import com.aryido.s3.operator.repository.IS3Repository;
 import com.aryido.s3.operator.repository.impl.S3KinesisDataRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import com.aryido.common.proto.Message.KinesisData;
 
 /**
  * @author YunYang Lee

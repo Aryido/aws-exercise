@@ -38,7 +38,7 @@
 				<artifactId>protobuf-maven-plugin</artifactId>
 				<version>0.6.1</version>
 				<configuration>
-					<protocExecutable>D:/protobuf/bin/protoc.exe</protocExecutable>
+					<protocExecutable>/usr/local/Cellar/protobuf/3.19.4/bin/protoc</protocExecutable>
 					<outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
 					<clearOutputDirectory>false</clearOutputDirectory>
 				</configuration>
