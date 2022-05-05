@@ -18,11 +18,10 @@
         <dependency>
             <groupId>com.aryido</groupId>
             <artifactId>common</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>com.amazonaws</groupId>
@@ -37,7 +36,6 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.11.0</version>
         </dependency>
     </dependencies>
 </project>

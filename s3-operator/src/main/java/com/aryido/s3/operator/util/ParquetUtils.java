@@ -1,8 +1,11 @@
 package com.aryido.s3.operator.util;
 
 import com.aryido.common.proto.Event.KinesisData;
+import com.google.protobuf.InvalidProtocolBufferException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
+import org.apache.parquet.proto.ProtoSchemaConverter;
+import org.apache.parquet.schema.MessageType;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,7 +34,11 @@ public class ParquetUtils {
 	//        return file.toPath();
 	//    }
 
+	//todo
 	public static File writeParquetFile( KinesisData data ) {
+		ProtoSchemaConverter protoSchemaConverter = new ProtoSchemaConverter( true );
+		MessageType schema = protoSchemaConverter.convert( KinesisData.class );
+		log.info( "schema: {}", schema.toString() );
 		File tempDirectory = FileUtils.getTempDirectory();
 		File filePath = FileUtils.getFile( tempDirectory, data.getUid() + ".parquet" );
 		try {
@@ -41,5 +48,11 @@ public class ParquetUtils {
 			log.error( "Failed to Write parquet file {}.", data.getUid() );
 		}
 		return tempDirectory;
+	}
+
+	//todo
+	public static void readParquetFile( byte[] bytes ) throws InvalidProtocolBufferException {
+		KinesisData kinesisData = KinesisData.parseFrom( bytes );
+		log.info( "hello, {}, {}.", kinesisData.getUid(), kinesisData.getName() );
 	}
 }

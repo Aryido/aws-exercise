@@ -14,20 +14,20 @@
 	<name>common</name>
 	<description>Demo project for Spring Boot AWS protobuf</description>
 
+	<properties>
+		<protobuf-version>3.20.1</protobuf-version>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.google.protobuf</groupId>
 			<artifactId>protobuf-java</artifactId>
-			<version>3.20.1</version>
+			<version>${protobuf-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.protobuf</groupId>
 			<artifactId>protobuf-java-util</artifactId>
-			<version>3.20.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-messaging</artifactId>
+			<version>${protobuf-version}</version>
 		</dependency>
 	</dependencies>
 
