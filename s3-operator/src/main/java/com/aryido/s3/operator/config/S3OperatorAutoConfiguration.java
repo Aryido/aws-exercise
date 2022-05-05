@@ -1,4 +1,4 @@
-package com.aryido.s3.operator.repository.config;
+package com.aryido.s3.operator.config;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.aryido.s3.operator.repository.IS3Repository;
