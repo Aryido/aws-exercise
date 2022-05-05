@@ -1,6 +1,5 @@
 package com.aryido.kinesis.producer.controller;
-
-import com.aryido.common.proto.Message.KinesisData;
+import com.aryido.common.proto.Event.KinesisData;
 import com.aryido.kinesis.producer.service.IProtobufConvertorService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

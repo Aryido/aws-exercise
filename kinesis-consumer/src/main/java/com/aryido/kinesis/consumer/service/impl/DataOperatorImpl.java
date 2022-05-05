@@ -1,6 +1,6 @@
 package com.aryido.kinesis.consumer.service.impl;
 
-import com.aryido.common.proto.Message.KinesisData;
+import com.aryido.common.proto.Event.KinesisData;
 import com.aryido.kinesis.consumer.service.IDataOperator;
 import com.aryido.s3.operator.repository.IS3Repository;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +23,7 @@ public class DataOperatorImpl implements IDataOperator<KinesisData> {
 	@Override
 	public void upload( byte[] bytes ) {
 		try {
-			KinesisData kinesisData = KinesisData.parseFrom(bytes);
+			KinesisData kinesisData = KinesisData.parseFrom( bytes );
 			log.info( "hello, {}, {}.", kinesisData.getUid(), kinesisData.getName() );
 			this.s3Repository.putData( kinesisData );
 		} catch (Exception e) {

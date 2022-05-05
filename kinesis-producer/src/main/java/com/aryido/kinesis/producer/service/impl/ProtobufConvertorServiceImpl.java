@@ -1,7 +1,7 @@
 package com.aryido.kinesis.producer.service.impl;
 
-import com.aryido.common.proto.Message.KinesisData;
 import com.aryido.kinesis.producer.service.IProtobufConvertorService;
+import com.aryido.common.proto.Event.KinesisData;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;

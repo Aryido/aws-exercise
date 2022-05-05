@@ -1,6 +1,6 @@
 package com.aryido.kinesis.consumer.stream;
 
-import com.aryido.common.proto.Message.KinesisData;
+import com.aryido.common.proto.Event.KinesisData;
 import com.aryido.kinesis.consumer.service.IDataOperator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +25,9 @@ public class KinesisStreamBinding {
 
 	@Bean
 	public Consumer<Message<byte[]>> responseData() {
-		return message ->{
-			log.info(message.getHeaders().toString());
-			dataOperator.upload(message.getPayload());
+		return message -> {
+			log.info( "Header: {}", message.getHeaders() );
+			dataOperator.upload( message.getPayload() );
 		};
 	}
 

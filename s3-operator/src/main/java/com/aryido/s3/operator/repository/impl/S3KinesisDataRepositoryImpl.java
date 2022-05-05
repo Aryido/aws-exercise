@@ -1,5 +1,6 @@
 package com.aryido.s3.operator.repository.impl;
 
+import com.aryido.common.proto.Event.KinesisData;
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.regions.Regions;
@@ -9,7 +10,6 @@ import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
-import com.aryido.common.proto.Message.KinesisData;
 import com.aryido.s3.operator.repository.IS3Repository;
 import com.aryido.s3.operator.util.ParquetUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -49,7 +49,7 @@ public class S3KinesisDataRepositoryImpl implements IS3Repository<KinesisData> {
     public void putData(KinesisData data) throws IOException {
         if (s3client.doesBucketExistV2(BUCKET_NAME)) {
             log.info("write into s3.");
-            //parquet schema
+
             ProtoSchemaConverter protoSchemaConverter = new ProtoSchemaConverter(true);
             MessageType schema = protoSchemaConverter.convert(KinesisData.class);
             log.info(schema.toString());
