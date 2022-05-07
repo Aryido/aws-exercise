@@ -14,10 +14,10 @@ import com.aryido.s3.operator.repository.IS3Repository;
 import com.aryido.s3.operator.util.ParquetUtils;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Path;
 import java.util.Optional;
 
 /**
@@ -51,8 +51,8 @@ public class S3KinesisDataRepositoryImpl implements IS3Repository<KinesisData> {
 			log.error( "There is no bucket {}", BUCKET_NAME );
 			return;
 		}
-		File file = ParquetUtils.writeParquetFile( data );
-		try (InputStream is = new FileInputStream( file )) {
+		Path path = ParquetUtils.writeParquetFile( data );
+		try (InputStream is = new FileInputStream( path.toFile() )) {
 			s3client.putObject( new PutObjectRequest( BUCKET_NAME, data.getUid() + ".parquet", is, new ObjectMetadata() ) );
 			log.info( "Success putting data into bucket {}", BUCKET_NAME );
 		} catch (AmazonServiceException ase) {
