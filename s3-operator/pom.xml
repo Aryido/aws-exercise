@@ -28,10 +28,10 @@
             <artifactId>aws-java-sdk-s3</artifactId>
             <version>1.12.206</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.parquet</groupId>
-            <artifactId>parquet-protobuf</artifactId>
-            <version>1.12.2</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.parquet</groupId>-->
+<!--            <artifactId>parquet-protobuf</artifactId>-->
+<!--            <version>1.12.2</version>-->
+<!--        </dependency>-->
     </dependencies>
 </project>

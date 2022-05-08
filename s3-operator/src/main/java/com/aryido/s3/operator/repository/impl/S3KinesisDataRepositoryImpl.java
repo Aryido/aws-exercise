@@ -40,9 +40,11 @@ public class S3KinesisDataRepositoryImpl implements IS3Repository<KinesisData> {
 			log.error( "There is no bucket {}", BUCKET_NAME );
 			return Optional.empty();
 		}
+
 		S3Object object = s3client.getObject( new GetObjectRequest( BUCKET_NAME, uid + ".parquet" ) );
-		return Optional.of( object.getObjectContent()
-				.readAllBytes() );
+		try(InputStream ip = object.getObjectContent();){
+			return Optional.of( ip.readAllBytes() );
+		}
 	}
 
 	@Override
