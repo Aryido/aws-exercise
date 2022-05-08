@@ -29,7 +29,8 @@ public class DataObserverController {
 		if ( optionalBytes.isPresent() ) {
 			byte[] bytes = optionalBytes.get();
 			KinesisData kinesisData = KinesisData.parseFrom( bytes );
-			return ResponseEntity.ok( "find " + kinesisData.getUid() + " in bucket." );
+			return ResponseEntity.ok(
+					"find " + kinesisData.getUid() + " in bucket with name " + kinesisData.getName() );
 		} else {
 			return ResponseEntity.ok( "not find " + uid + " in bucket." );
 		}
