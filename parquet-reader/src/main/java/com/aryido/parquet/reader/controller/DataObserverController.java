@@ -1,7 +1,7 @@
 package com.aryido.parquet.reader.controller;
 
 import com.aryido.common.proto.Event.KinesisData;
-import com.aryido.s3.operator.repository.IS3Repository;
+import com.aryido.s3.operator.service.IS3Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,19 +16,18 @@ import java.util.Optional;
  */
 @RestController
 public class DataObserverController {
-	private final IS3Repository<KinesisData> repository;
+	private final IS3Service<KinesisData> service;
 
 	@Autowired
-	public DataObserverController( IS3Repository<KinesisData> repository ) {
-		this.repository = repository;
+	public DataObserverController( IS3Service<KinesisData> service ) {
+		this.service = service;
 	}
 
-	@GetMapping( "/s3-data/{uid}" )
-	public ResponseEntity<?> findData( @PathVariable String uid ) throws IOException {
-		Optional<byte[]> optionalBytes = repository.getDataBy( uid );
-		if ( optionalBytes.isPresent() ) {
-			byte[] bytes = optionalBytes.get();
-			KinesisData kinesisData = KinesisData.parseFrom( bytes );
+	@GetMapping( "/s3-data/{bucketName}/{uid}" )
+	public ResponseEntity<?> findData( @PathVariable String bucketName, @PathVariable String uid ) throws IOException {
+		Optional<KinesisData> optionalKinesisData = service.getDataBy( bucketName, uid );
+		if ( optionalKinesisData.isPresent() ) {
+			KinesisData kinesisData = optionalKinesisData.get();
 			return ResponseEntity.ok(
 					"find " + kinesisData.getUid() + " in bucket with name " + kinesisData.getName() );
 		} else {
