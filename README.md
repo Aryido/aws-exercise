@@ -38,31 +38,35 @@ cloud:
 Protobuf class will be generated when we builded pom every time.
 ```
 <build>
-		<plugins>
-			<plugin>
-				<groupId>org.xolstice.maven.plugins</groupId>
-				<artifactId>protobuf-maven-plugin</artifactId>
-				<version>0.6.1</version>
-				<configuration>
-					<protocExecutable>protoc</protocExecutable>
-					<outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
-					<clearOutputDirectory>false</clearOutputDirectory>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>compile</goal>
-							<goal>test-compile</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+	<plugins>
+		<plugin>
+			<groupId>org.xolstice.maven.plugins</groupId>
+			<artifactId>protobuf-maven-plugin</artifactId>
+			<version>0.6.1</version>
+			<configuration>
+				<protocExecutable>protoc</protocExecutable>
+				<outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
+				<clearOutputDirectory>false</clearOutputDirectory>
+			</configuration>
+			<executions>
+				<execution>
+					<goals>
+						<goal>compile</goal>
+						<goal>test-compile</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+	</plugins>
+</build>
 ```
 
 - Step3. Run kinesis-consumer, kinesis-producer, parquet-reader application
 
+# FAQ
+- Parquet-mr doesn't work.
+
+HADOOP_HOME and hadoop.home.dir are unset. [Problems running Hadoop on Windows](https://cwiki.apache.org/confluence/display/HADOOP2/WindowsProblems)
 
 
 # Reference
