@@ -13,6 +13,8 @@ The demo project is used spring cloud stream binding framework to interact with 
 
 ## Architecture
 
+![image](https://user-images.githubusercontent.com/60870275/168468101-3fdd1da5-c850-4882-a06b-7a935ae6f996.png)
+
 # Usage
 - Step1. Setting credential file by AWS-CLI
 
