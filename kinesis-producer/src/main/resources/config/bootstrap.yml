@@ -4,3 +4,12 @@ aws:
     prefix: /config
     name: aryido-common
     profileSeparator: _
+
+cloud:
+  aws:
+    credentials:
+      profile-name: default
+    region:
+      static: ap-northeast-1
+    stack:
+      auto: false
