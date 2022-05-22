@@ -1,0 +1,24 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Description:
+  AWS CloudFormation Sample Template SSM.
+
+Resources:
+  AryidoS3Parameter:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Description: s3 bucket name
+      Name: AryidoS3Parameter
+      Type: String
+      Value: test-kinesis-henry-y-lee-s3-edee8b56
+
+  AryidoKinesisStreamParameter:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Description: kinesis stream name
+      Name: AryidoKinesisStreamParameter
+      Type: String
+      Value: test-kinesis-henry-y-lee-stream-edee8d22
+
+
+

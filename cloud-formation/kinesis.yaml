@@ -1,0 +1,12 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Description:
+  AWS CloudFormation Sample Template S3.
+
+Resources:
+  AryidoEventStream:
+    Type: AWS::Kinesis::Stream
+    Properties:
+      Name: test-kinesis-henry-y-lee-stream-edee8d22
+      RetentionPeriodHours: 24
+      ShardCount: 1

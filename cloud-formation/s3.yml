@@ -1,0 +1,10 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Description:
+  AWS CloudFormation Sample Template S3.
+
+Resources:
+  AryidoS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: test-kinesis-henry-y-lee-s3-edee8b56
