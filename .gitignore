@@ -27,3 +27,7 @@ HELP.md
 
 ### VS Code ###
 .vscode/
+
+### test ###
+.kinesisData.parquet.crc
+kinesisData.parquet

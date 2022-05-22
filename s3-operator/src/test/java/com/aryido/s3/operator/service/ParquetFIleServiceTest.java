@@ -4,6 +4,7 @@ import com.aryido.common.proto.Event;
 import com.aryido.s3.operator.util.ParquetFileUtils;
 import org.apache.hadoop.fs.Path;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -14,6 +15,7 @@ import java.util.UUID;
  */
 public class ParquetFIleServiceTest {
 
+	@Disabled
 	@Test
 	public void testParquetFile() throws IOException {
 		Event.KinesisData.Builder builder = Event.KinesisData.newBuilder();
