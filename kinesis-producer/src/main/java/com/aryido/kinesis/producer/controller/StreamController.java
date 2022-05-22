@@ -2,9 +2,9 @@ package com.aryido.kinesis.producer.controller;
 
 import com.aryido.common.property.SSMParameter;
 import com.aryido.common.proto.Event.KinesisData;
+import com.aryido.common.util.ProtobufUtils;
 import com.aryido.kinesis.producer.service.IProtobufConvertorService;
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.util.JsonFormat;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.function.StreamBridge;
@@ -33,10 +33,6 @@ public class StreamController {
 		log.info("stream name is {}.", parameter.getAryidoKinesisStreamParameter() );
 		KinesisData data = protoBufConvertorService.convert( name );
 		this.bridge.send( parameter.getAryidoKinesisStreamParameter(), data.toByteArray() );
-		return ResponseEntity.ok( convert( data ) );
-	}
-
-	private String convert( KinesisData data ) throws InvalidProtocolBufferException {
-		return JsonFormat.printer().print( data );
+		return ResponseEntity.ok( ProtobufUtils.convert( data ) );
 	}
 }

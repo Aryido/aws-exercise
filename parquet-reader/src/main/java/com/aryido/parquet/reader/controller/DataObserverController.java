@@ -1,6 +1,7 @@
 package com.aryido.parquet.reader.controller;
 
 import com.aryido.common.proto.Event.KinesisData;
+import com.aryido.common.util.ProtobufUtils;
 import com.aryido.s3.operator.service.IS3Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,8 +29,7 @@ public class DataObserverController {
 		Optional<KinesisData> optionalKinesisData = service.getDataBy( bucketName, uid );
 		if ( optionalKinesisData.isPresent() ) {
 			KinesisData kinesisData = optionalKinesisData.get();
-			return ResponseEntity.ok(
-					"find " + kinesisData.getUid() + " in bucket with name " + kinesisData.getName() );
+			return ResponseEntity.ok( ProtobufUtils.convert( kinesisData ) );
 		} else {
 			return ResponseEntity.ok( "not find " + uid + " in bucket." );
 		}

@@ -1,6 +1,7 @@
 package com.aryido.kinesis.consumer.service.impl;
 
 import com.aryido.common.proto.Event.KinesisData;
+import com.aryido.common.util.ProtobufUtils;
 import com.aryido.kinesis.consumer.service.IDataOperator;
 import com.aryido.s3.operator.service.IS3Service;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +25,7 @@ public class DataOperatorImpl implements IDataOperator<KinesisData> {
 	public void upload( String bucketName, byte[] bytes ) {
 		try {
 			KinesisData kinesisData = KinesisData.parseFrom( bytes );
-			log.info( "hello, {}, {}.", kinesisData.getUid(), kinesisData.getName() );
+			log.info( "finish parse byte: {}", ProtobufUtils.convert( kinesisData ) );
 			this.kinesisDataIS3Service.putData( bucketName, kinesisData );
 		} catch (Exception e) {
 			log.error( e.getMessage() );
