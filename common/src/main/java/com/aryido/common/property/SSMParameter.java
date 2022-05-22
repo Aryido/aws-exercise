@@ -1,4 +1,4 @@
-package com.aryido.kinesis.consumer.property;
+package com.aryido.common.property;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +11,8 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 @Component
-@ConfigurationProperties( prefix = "aryido.s3" )
-public class S3Properties {
-	private String bucketName;
+@ConfigurationProperties
+public class SSMParameter {
+	private String AryidoKinesisStreamParameter;
+	private String AryidoS3Parameter;
 }

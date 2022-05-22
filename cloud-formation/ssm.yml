@@ -8,7 +8,7 @@ Resources:
     Type: AWS::SSM::Parameter
     Properties:
       Description: s3 bucket name
-      Name: AryidoS3Parameter
+      Name: /config/aryido-common/AryidoS3Parameter
       Type: String
       Value: test-kinesis-henry-y-lee-s3-edee8b56
 
@@ -16,7 +16,7 @@ Resources:
     Type: AWS::SSM::Parameter
     Properties:
       Description: kinesis stream name
-      Name: AryidoKinesisStreamParameter
+      Name: /config/aryido-common/AryidoKinesisStreamParameter
       Type: String
       Value: test-kinesis-henry-y-lee-stream-edee8d22
 
