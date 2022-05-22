@@ -16,7 +16,9 @@ The demo project is used spring cloud stream binding framework to interact with 
 ![image](https://user-images.githubusercontent.com/60870275/168468101-3fdd1da5-c850-4882-a06b-7a935ae6f996.png)
 
 # Usage
-- Step1. Setting credential file by AWS-CLI
+- Upload cloudFormation yml into AWS
+![img.png](img.png)
+- Setting credential file by AWS-CLI
 
 When we set credential by AWS-CLI, then we don't need to write `sensitive information` in application.yml. For example:
 ```
@@ -33,7 +35,7 @@ cloud:
       auto: false
 ```
 
-- Step2. Build parent pom
+- Build parent pom
 
 Protobuf class will be generated when we builded pom every time.
 ```
@@ -61,7 +63,7 @@ Protobuf class will be generated when we builded pom every time.
 </build>
 ```
 
-- Step3. Run kinesis-consumer, kinesis-producer, parquet-reader application
+- Run kinesis-consumer, kinesis-producer, parquet-reader application
 
 # FAQ
 - Parquet-mr doesn't work.
@@ -70,6 +72,10 @@ HADOOP_HOME and hadoop.home.dir are unset. [Problems running Hadoop on Windows](
 
 
 # Reference
+[AWS CloudFormation](https://zhangran1.medium.com/spring-boot-with-aws-parameter-store-and-aws-secret-manager-a45131bf9ac8)
+
+[AWS SSM](https://github.com/awsdocs/aws-cloudformation-user-guide/blob/main/doc_source/aws-resource-ssm-parameter.md)
+
 [AWS Configuration And Credential File Settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
 
 [Spring-Cloud-Stream-Binder-AWS-Kinesis](https://github.com/spring-cloud/spring-cloud-stream-binder-aws-kinesis/blob/main/spring-cloud-stream-binder-kinesis-docs/src/main/asciidoc/overview.adoc)
