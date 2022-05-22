@@ -5,12 +5,3 @@ spring:
 
   profiles:
     active: "@activeProfile@"
-
-cloud:
-  aws:
-    credentials:
-      profile-name: default
-    region:
-      static: ap-northeast-1
-    stack:
-      auto: false

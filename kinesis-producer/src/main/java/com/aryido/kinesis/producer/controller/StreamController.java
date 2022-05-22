@@ -1,11 +1,14 @@
 package com.aryido.kinesis.producer.controller;
+
+import com.aryido.common.property.SSMParameter;
 import com.aryido.common.proto.Event.KinesisData;
 import com.aryido.kinesis.producer.service.IProtobufConvertorService;
+import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.util.JsonFormat;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.MimeType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,22 +16,27 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 public class StreamController {
-	private static final String BINDING_NAME = "test-kinesis-henry-y-lee-stream";
-	private static final MimeType MIME_TYPE = MimeType.valueOf( "application/x-protobuf" );
-
+	private final SSMParameter parameter;
 	private final StreamBridge bridge;
 	private final IProtobufConvertorService<KinesisData> protoBufConvertorService;
 
 	@Autowired
-	public StreamController( StreamBridge bridge, IProtobufConvertorService<KinesisData> protoBufConvertorService ) {
+	public StreamController( SSMParameter parameter, StreamBridge bridge,
+			IProtobufConvertorService<KinesisData> protoBufConvertorService ) {
+		this.parameter = parameter;
 		this.bridge = bridge;
 		this.protoBufConvertorService = protoBufConvertorService;
 	}
 
 	@GetMapping( "/send/{name}" )
-	public ResponseEntity<?> delegateToSource( @PathVariable String name ) {
+	public ResponseEntity<?> delegateToSource( @PathVariable String name ) throws InvalidProtocolBufferException {
+		log.info("stream name is {}.", parameter.getAryidoKinesisStreamParameter() );
 		KinesisData data = protoBufConvertorService.convert( name );
-		this.bridge.send( BINDING_NAME, data.toByteArray(), MIME_TYPE );
-		return ResponseEntity.ok( name );
+		this.bridge.send( parameter.getAryidoKinesisStreamParameter(), data.toByteArray() );
+		return ResponseEntity.ok( convert( data ) );
+	}
+
+	private String convert( KinesisData data ) throws InvalidProtocolBufferException {
+		return JsonFormat.printer().print( data );
 	}
 }

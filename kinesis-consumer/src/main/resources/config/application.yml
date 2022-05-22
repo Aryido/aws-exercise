@@ -2,24 +2,9 @@ spring:
 
   profiles:
     active: "@activeProfile@"
-    include:
-      - s3
 
   cloud:
     stream:
       bindings:
         responseData-in-0:
-          destination: test-kinesis-henry-y-lee-stream
-          binder: kinesis
-
-      binders:
-        kinesis:
-          environment:
-            cloud:
-              aws:
-                credentials:
-                  profile-name: default
-                region:
-                  static: ap-northeast-1
-                stack:
-                  auto: false
+          destination: ${aryido.stream.bindings.destination}

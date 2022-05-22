@@ -1,7 +1,7 @@
 package com.aryido.kinesis.consumer.stream;
 
+import com.aryido.common.property.SSMParameter;
 import com.aryido.common.proto.Event.KinesisData;
-import com.aryido.kinesis.consumer.property.S3Properties;
 import com.aryido.kinesis.consumer.service.IDataOperator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,20 +18,19 @@ import java.util.function.Consumer;
 @Configuration
 public class KinesisStreamBinding {
 	private final IDataOperator<KinesisData> dataOperator;
-	private final S3Properties s3Properties;
+	private final SSMParameter ssmParameter;
 
 	@Autowired
-	public KinesisStreamBinding( IDataOperator<KinesisData> dataOperator, S3Properties s3Properties ) {
+	public KinesisStreamBinding( IDataOperator<KinesisData> dataOperator, SSMParameter ssmParameter ) {
 		this.dataOperator = dataOperator;
-		this.s3Properties = s3Properties;
+		this.ssmParameter = ssmParameter;
 	}
 
 	@Bean
 	public Consumer<Message<byte[]>> responseData() {
 		return message -> {
 			log.info( "Header: {}", message.getHeaders() );
-			dataOperator.upload( s3Properties.getBucketName(), message.getPayload() );
+			dataOperator.upload( ssmParameter.getAryidoS3Parameter(), message.getPayload() );
 		};
 	}
-
 }

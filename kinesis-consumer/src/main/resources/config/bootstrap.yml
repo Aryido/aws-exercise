@@ -1,0 +1,20 @@
+aryido:
+  stream:
+    bindings:
+        destination: test-kinesis-henry-y-lee-stream-edee8d22
+
+aws:
+  paramstore:
+    enabled: true
+    prefix: /config
+    name: aryido-common
+    profileSeparator: _
+
+cloud:
+  aws:
+    credentials:
+      profile-name: default
+    region:
+      static: ap-northeast-1
+    stack:
+      auto: false
